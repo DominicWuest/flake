@@ -11,7 +11,7 @@
   home.packages = with pkgs; [
     xcompmgr # transparency
     feh # set wallpapers
-		xclip # clipboard integration
+		xclip xsel # clipboard integration
 
     # zsh
     oh-my-zsh
