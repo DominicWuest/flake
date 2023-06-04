@@ -29,6 +29,7 @@ in
     iosevka
     roboto-mono
     rPackages.fontawesome
+    powerline-fonts
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";

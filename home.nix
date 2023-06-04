@@ -42,7 +42,6 @@
   };
 
   home.file = {
-
     # i3
     ".config/i3/config" = {
       source = ./dotfiles/i3;
@@ -72,10 +71,7 @@
 
   programs.go.enable = true;
 
-  xsession.windowManager.i3.config = {
-    focus.followMouse = false;
-    focus.mouseWarping = false;
-  };
+  xresources.extraConfig = builtins.readFile ( ./dotfiles/Xresources );
 
   home.sessionVariables = {
     EDITOR = "vim";
