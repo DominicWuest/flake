@@ -46,6 +46,8 @@ in
 			gruntfuggly.todo-tree
 			vscodevim.vim
 			streetsidesoftware.code-spell-checker
+			bbenoist.nix
+			emmanuelbeziat.vscode-great-icons
 		] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
 			{
 				name = "vscode-todo-highlight";
