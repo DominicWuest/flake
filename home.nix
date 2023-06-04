@@ -130,6 +130,7 @@ in
 
   programs.zsh = {
 		enable = true;
+		enableCompletion = false; # Already enabled globally
 	  sessionVariables = {
     	EDITOR = "vim";
     	VISUAL = "vim";
