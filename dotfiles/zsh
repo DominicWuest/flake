@@ -139,9 +139,7 @@ if [ "$TMUX" = "" ]; then
 else
 	# Startup functions
 	clear
-	echo
 	local pane_width=$(tmux display-message -p "#{pane_width}")
 	local pane_height=$(tmux display-message -p "#{pane_height}")
 	viu -w $(($pane_width / 2)) -h $(($pane_height / 2)) $(ls -d ~/Pictures/potd/* | sort -R | head -n1) # Show potd
-	echo 
 fi
