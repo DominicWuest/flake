@@ -135,7 +135,7 @@ export KREWPATH=/home/dominic/.krew/bin
 export PATH=/home/dominic/Scripts:/home/dominic/.local/bin:$GOBIN:$KREWPATH:$PATH
 
 if [ "$TMUX" = "" ]; then 
-	tmux
+	tmux attach -t 0 || tmux
 else
 	# Startup functions
 	clear
