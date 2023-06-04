@@ -1,0 +1,11 @@
+set -g prefix C-a
+unbind C-b
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+
+# aliases
+bind j select-pane -L 
+bind k select-pane -D
+bind l select-pane -U
+bind ö select-pane -R
+bind ';' select-pane -R
