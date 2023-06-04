@@ -63,7 +63,11 @@
     "Pictures/potd" = {
       source = ./media/potd;
       recursive = true;
-    };    
+    };
+    # Custom zsh agnoster theme
+    ".oh-my-custom/themes/agnoster-custom.zsh-theme" = {
+      source = ./dotfiles/zsh-theme;
+    };
 
   };
 
