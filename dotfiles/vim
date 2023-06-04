@@ -1,0 +1,18 @@
+scriptencoding utf-8
+set fileencoding=utf-8
+
+syntax on
+set tabstop=2
+set autoindent
+set nowrap
+set number
+hi Normal ctermbg=BLACK
+au BufEnter * hi Normal ctermbg=BLACK
+
+set cursorline
+
+noremap ; l
+noremap ö l
+noremap l k
+noremap k j
+noremap j h

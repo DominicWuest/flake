@@ -58,6 +58,9 @@
     };
 
     # vim
+    ".vimrc" = {
+      source = ./dotfiles/vim;
+    };
 
     # zsh
     ".zshrc" = {
