@@ -9,6 +9,11 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    # zsh
+    oh-my-zsh
+    viu # Images in terminal
+
+    # Python and packages
     (python311.withPackages(ps: with ps; [
       # i3 bumblebee-status dependencies
       netifaces # for nic
@@ -55,14 +60,14 @@
     # vim
 
     # zsh
-  };
-
-  programs.zsh = {
-    enable = true;
-    autocd = true;
-    oh-my-zsh = {
-      enable = true;
+    ".zshrc" = {
+      source = ./dotfiles/zsh;
     };
+    "Pictures/potd" = {
+      source = ./media/potd;
+      recursive = true;
+    };    
+
   };
 
   programs.go.enable = true;

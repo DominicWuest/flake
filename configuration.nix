@@ -62,7 +62,10 @@ in
 
   services.urxvtd.enable = true;
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    ohMyZsh.enable = true;
+  };
   programs.tmux.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
