@@ -8,14 +8,15 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+  home.packages = with pkgs; [
+    (python311.withPackages(ps: with ps; [
+      # i3 bumblebee-status dependencies
+      netifaces # for nic
+      psutil    # for cpu
+      pulsectl  # for pulseout
+    ]))
 
-    (pkgs.writeShellScriptBin "my-hello" ''
+    (writeShellScriptBin "my-hello" ''
       echo "Hello, ${config.home.username}!"
     '')
   ];
@@ -35,9 +36,46 @@
     # '';
   };
 
+  home.file = {
+
+    # i3
+    ".config/i3/config" = {
+      source = ./dotfiles/i3;
+    };
+    ".config/i3/bumblebee-status" = {
+      source = builtins.fetchGit {
+        url = "https://github.com/tobi-wan-kenobi/bumblebee-status.git";
+        rev = "e5f36053aff760a1a9f3d9a7f48a21daccd412ae";
+      };
+      recursive = true;
+    };
+
+    # tmux
+    
+    # vim
+
+    # zsh
+  };
+
+  programs.zsh = {
+    enable = true;
+    autocd = true;
+    oh-my-zsh = {
+      enable = true;
+    };
+  };
+
+  programs.go.enable = true;
+
+  xsession.windowManager.i3.config = {
+    focus.followMouse = false;
+    focus.mouseWarping = false;
+  };
+
   home.sessionVariables = {
     EDITOR = "vim";
     VISUAL = "vim";
+    TERM = "tmux";
   };
 
   programs.home-manager.enable = true;

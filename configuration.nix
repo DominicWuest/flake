@@ -25,6 +25,11 @@ in
 
   time.timeZone = "Europe/Zurich";
 
+  fonts.fonts = with pkgs; [
+    iosevka
+    roboto-mono
+    rPackages.fontawesome
+  ];
 
   i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -55,6 +60,11 @@ in
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
+  services.urxvtd.enable = true;
+
+  programs.zsh.enable = true;
+  programs.tmux.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
@@ -63,7 +73,10 @@ in
       firefox
       tree
     ];
+    shell = pkgs.zsh;
   };
+
+  users.defaultUserShell = pkgs.zsh;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
