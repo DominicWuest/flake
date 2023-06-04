@@ -9,6 +9,10 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+		# Go tools
+		gopls # language server
+		delve # debugger
+
     xcompmgr # transparency
     feh # set wallpapers
 		xclip xsel # clipboard integration
@@ -30,17 +34,20 @@
 	programs.vscode = {
 		enable = true;
 		extensions = with pkgs.vscode-extensions; [
+			golang.go
+			christian-kohler.path-intellisense
 			eamodio.gitlens
 			jdinhlife.gruvbox
 			gruntfuggly.todo-tree
 			vscodevim.vim
-		# ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-		# 	{
-		# 		name = "vscode-todo-highlight";
-		# 		publisher = "wayou";
-		# 		version = "1.0.5";
-		# 		sha256 = "e5f36053aff760a1a9f3d9a7f48a21daccd412ae";
-		# 	}
+			streetsidesoftware.code-spell-checker
+		] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+			{
+				name = "vscode-todo-highlight";
+				publisher = "wayou";
+				version = "1.0.5";
+				sha256 = "sha256-CQVtMdt/fZcNIbH/KybJixnLqCsz5iF1U0k+GfL65Ok=";
+			}
 		];
 	};
 
