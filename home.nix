@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+	user = "dominic";
+in
 {
   home.username = "dominic";
   home.homeDirectory = "/home/dominic";
@@ -29,6 +32,25 @@
       pulsectl  # for pulseout
     ]))
   ];
+
+	# Firefox
+	programs.firefox = {
+		enable = true;
+		profiles.${user} = {
+			id = 0;
+			name = "${user}";
+			extensions = with config.nur.repos.rycee.firefox-addons; [
+				wappalyzer
+				simple-tab-groups
+				bitwarden
+				grammarly
+				user-agent-string-switcher
+				gruvbox-dark-theme
+			];
+			search.default = "DuckDuckGo";
+		};
+	};
+
 
 	# VSCode
 	programs.vscode = {
