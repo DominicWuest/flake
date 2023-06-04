@@ -126,10 +126,13 @@ in
 
   programs.go.enable = true;
 
-  home.sessionVariables = {
-    EDITOR = "vim";
-    VISUAL = "vim";
-    TERM = "tmux";
+  programs.zsh = {
+		enable = true;
+	  sessionVariables = {
+    	EDITOR = "vim";
+    	VISUAL = "vim";
+    	TERM = "tmux";
+		};
   };
 
   programs.home-manager.enable = true;
