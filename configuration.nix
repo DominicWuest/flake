@@ -27,6 +27,7 @@ in
 		[main]
 		auth-polkit = false
 		'';
+		wifi.powersave = false; # Disable powersave
 	};
 
   time.timeZone = "Europe/Zurich";
