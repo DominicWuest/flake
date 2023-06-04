@@ -11,38 +11,38 @@
   home.packages = with pkgs; [
     xcompmgr # transparency
     feh # set wallpapers
+		xclip # clipboard integration
 
     # zsh
     oh-my-zsh
     viu # Images in terminal
 
     # Python and packages
-    (python311.withPackages(ps: with ps; [
+    ( python311.withPackages (ps: with ps; [
       # i3 bumblebee-status dependencies
       netifaces # for nic
       psutil    # for cpu
       pulsectl  # for pulseout
     ]))
-
-    (writeShellScriptBin "my-hello" ''
-      echo "Hello, ${config.home.username}!"
-    '')
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
+	# VSCode
+	programs.vscode = {
+		enable = true;
+		extensions = with pkgs.vscode-extensions; [
+			eamodio.gitlens
+			jdinhlife.gruvbox
+			gruntfuggly.todo-tree
+			vscodevim.vim
+		# ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+		# 	{
+		# 		name = "vscode-todo-highlight";
+		# 		publisher = "wayou";
+		# 		version = "1.0.5";
+		# 		sha256 = "e5f36053aff760a1a9f3d9a7f48a21daccd412ae";
+		# 	}
+		];
+	};
 
   home.file = {
     # i3
