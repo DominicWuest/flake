@@ -21,7 +21,13 @@ in
   # };
 
   networking.hostName = "onion";
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+		enable = true;
+		extraConfig = ''
+		[main]
+		auth-polkit = false
+		'';
+	};
 
   time.timeZone = "Europe/Zurich";
 
