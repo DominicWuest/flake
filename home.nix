@@ -33,24 +33,7 @@ in
     ]))
   ];
 
-	# Firefox
-	programs.firefox = {
-		enable = true;
-		profiles.${user} = {
-			id = 0;
-			name = "${user}";
-			extensions = with config.nur.repos.rycee.firefox-addons; [
-				wappalyzer
-				simple-tab-groups
-				bitwarden
-				grammarly
-				user-agent-string-switcher
-				gruvbox-dark-theme
-			];
-			search.default = "DuckDuckGo";
-		};
-	};
-
+	programs.firefox.enable = true;
 
 	# VSCode
 	programs.vscode = {

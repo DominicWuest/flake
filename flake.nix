@@ -7,10 +7,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-		nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur }:
+  outputs = { self, nixpkgs, home-manager }:
   let
     user = "dominic";
     system = "x86_64-linux";
@@ -40,7 +39,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${user} = {
-              imports = [ nur.hmModules.nur ./home.nix ];
+              imports = [ ./home.nix ];
             };
           }
         ];
