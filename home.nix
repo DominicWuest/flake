@@ -9,6 +9,9 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    xcompmgr # transparency
+    feh # set wallpapers
+
     # zsh
     oh-my-zsh
     viu # Images in terminal
@@ -60,12 +63,15 @@
     ".zshrc" = {
       source = ./dotfiles/zsh;
     };
-    "Pictures/potd" = {
+    "Pictures/potd" = { # Potd shown when starting shell
       source = ./media/potd;
       recursive = true;
     };
-    # Custom zsh agnoster theme
-    ".oh-my-custom/themes/agnoster-custom.zsh-theme" = {
+    "Pictures/wallpapers" = {
+      source = ./media/wallpapers;
+      recursive = true;
+    };
+    ".oh-my-custom/themes/agnoster-custom.zsh-theme" = { # Custom agnoster theme
       source = ./dotfiles/zsh-theme;
     };
 
