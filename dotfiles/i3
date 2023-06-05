@@ -194,7 +194,7 @@ bar {
 	height 20
 	status_command ~/.config/i3/bumblebee-status/bumblebee-status \
 		-m layout nic disk:root cpu memory pulseout battery date time \
-		-p root.path=/ time.format="%H:%M:%S" date.format="%a, %d %b %Y" pulseout.limit=100 pulseout.percent_change=1 \
+		-p nic.format="{state} - {ssid} {strength}" root.path=/ time.format="%H:%M:%S" date.format="%a, %d %b %Y" pulseout.limit=100 pulseout.percent_change=1 \
 		-t gruvbox-powerline
 }
 #end of BAR SECTION

@@ -31,6 +31,8 @@ in
       psutil    # for cpu
       pulsectl  # for pulseout
     ]))
+
+		iw # i3 bumblebee-status nic dependency
   ];
 
 	programs.firefox.enable = true;
