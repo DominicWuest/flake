@@ -2,6 +2,8 @@ set -g prefix C-a
 unbind C-b
 bind '"' split-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
+# Don't open new windows in pwd
+bind c new-window -c "$HOME"
 
 # aliases
 bind j select-pane -L 
