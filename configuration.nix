@@ -11,14 +11,19 @@ in
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 5;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # boot.loader.grub = {
-  #   enable = true;
-  #   useOSProber = true;
-  #   device = "/dev/disk/by-label/boot";
-  # };
+  # Storage optimization
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
 
   networking.hostName = "onion";
   networking.networkmanager = {
