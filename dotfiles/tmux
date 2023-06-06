@@ -1,7 +1,11 @@
 set -g prefix C-a
 unbind C-b
+
+set -g repeat-time 1000
+
 bind '"' split-window -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
+
 # Don't open new windows in pwd
 bind c new-window -c "$HOME"
 
@@ -11,3 +15,12 @@ bind k select-pane -D
 bind l select-pane -U
 bind ö select-pane -R
 bind ';' select-pane -R
+
+# Reorder all windows
+bind r move-window -r \; display-message "Windows reordered"
+
+bind -r < swap-window -t - \; select-window -t - # Move current window to the left
+bind -r > swap-window -t + \; select-window -t + # Move current window one to the right
+
+# Kill all sessions except the one currently in use
+bind Q confirm-before -p "Are you sure you want to kill all other sessions? (Y/N)" "kill-session -a $WHOAMI"
