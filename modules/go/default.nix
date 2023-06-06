@@ -21,6 +21,8 @@ in
     [
       gopls # language server
       delve # debugger
+      golint # linter
+      go-tools # static checker
 
       # Third party dev tools
       cobra-cli
