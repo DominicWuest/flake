@@ -28,5 +28,9 @@ in
     [
       # TODO: Where to put this...
       nixpkgs-fmt
+
+      slack
+      discord
+      thunderbird
     ];
 }
