@@ -26,14 +26,7 @@ in
   };
 
   networking.hostName = "onion";
-  networking.networkmanager = {
-		enable = true;
-		extraConfig = ''
-		[main]
-		auth-polkit = false
-		'';
-		wifi.powersave = false; # Disable powersave
-	};
+  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Zurich";
 
@@ -86,7 +79,7 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "networkmanager" ];
     packages = with pkgs; [
       firefox
       tree
