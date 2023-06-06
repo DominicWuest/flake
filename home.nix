@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-	user = "dominic";
+  user = "dominic";
 in
 {
   home.username = "dominic";
@@ -12,53 +12,56 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-		# Go tools
-		gopls # language server
-		delve # debugger
+    nixpkgs-fmt
+
+    # Go tools
+    gopls # language server
+    delve # debugger
 
     xcompmgr # transparency
     feh # set wallpapers
-		xclip xsel # clipboard integration
+    xclip
+    xsel # clipboard integration
 
     # zsh
     oh-my-zsh
     viu # Images in terminal
 
     # Python and packages
-    ( python311.withPackages (ps: with ps; [
+    (python311.withPackages (ps: with ps; [
       # i3 bumblebee-status dependencies
       netifaces # for nic
-      psutil    # for cpu
-      pulsectl  # for pulseout
+      psutil # for cpu
+      pulsectl # for pulseout
     ]))
 
-		iw # i3 bumblebee-status nic dependency
+    iw # i3 bumblebee-status nic dependency
   ];
 
-	programs.firefox.enable = true;
+  programs.firefox.enable = true;
 
-	# VSCode
-	programs.vscode = {
-		enable = true;
-		extensions = with pkgs.vscode-extensions; [
-			golang.go
-			christian-kohler.path-intellisense
-			eamodio.gitlens
-			jdinhlife.gruvbox
-			gruntfuggly.todo-tree
-			vscodevim.vim
-			streetsidesoftware.code-spell-checker
-			bbenoist.nix
-			emmanuelbeziat.vscode-great-icons
-		] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-			{
-				name = "vscode-todo-highlight";
-				publisher = "wayou";
-				version = "1.0.5";
-				sha256 = "sha256-CQVtMdt/fZcNIbH/KybJixnLqCsz5iF1U0k+GfL65Ok=";
-			}
-		];
-	};
+  # VSCode
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      golang.go
+      christian-kohler.path-intellisense
+      eamodio.gitlens
+      jdinhlife.gruvbox
+      gruntfuggly.todo-tree
+      vscodevim.vim
+      streetsidesoftware.code-spell-checker
+      bbenoist.nix
+      emmanuelbeziat.vscode-great-icons
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "vscode-todo-highlight";
+        publisher = "wayou";
+        version = "1.0.5";
+        sha256 = "sha256-CQVtMdt/fZcNIbH/KybJixnLqCsz5iF1U0k+GfL65Ok=";
+      }
+    ];
+  };
 
   home.file = {
     # i3
@@ -82,7 +85,8 @@ in
     ".zshrc" = {
       source = ./dotfiles/zsh;
     };
-    "Pictures/potd" = { # Potd shown when starting shell
+    "Pictures/potd" = {
+      # Potd shown when starting shell
       source = ./media/potd;
       recursive = true;
     };
@@ -90,7 +94,8 @@ in
       source = ./media/wallpapers;
       recursive = true;
     };
-    ".oh-my-custom/themes/agnoster-custom.zsh-theme" = { # Custom agnoster theme
+    ".oh-my-custom/themes/agnoster-custom.zsh-theme" = {
+      # Custom agnoster theme
       source = ./dotfiles/zsh-theme;
     };
 
@@ -98,14 +103,14 @@ in
 
   programs.tmux = {
     enable = true;
-    extraConfig = builtins.readFile ( ./dotfiles/tmux );
+    extraConfig = builtins.readFile (./dotfiles/tmux);
     plugins = with pkgs; [
       # Resurrect plugin
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig = ''
-        set -g @resurrect-strategy-vim 'session'
-        set -g @resurrect-capture-pane-contents 'on'
+          set -g @resurrect-strategy-vim 'session'
+          set -g @resurrect-capture-pane-contents 'on'
         '';
       }
 
@@ -113,8 +118,8 @@ in
       {
         plugin = tmuxPlugins.continuum;
         extraConfig = ''
-        set -g @continuum-restore 'on'
-        set -g @continuum-save-interval '5'
+          set -g @continuum-restore 'on'
+          set -g @continuum-save-interval '5'
         '';
       }
 
@@ -126,7 +131,7 @@ in
     ];
   };
 
-  xresources.extraConfig = builtins.readFile ( ./dotfiles/Xresources );
+  xresources.extraConfig = builtins.readFile (./dotfiles/Xresources);
 
   programs.go.enable = true;
   # Add needed go directories
@@ -137,13 +142,13 @@ in
   ];
 
   programs.zsh = {
-		enable = true;
-		enableCompletion = false; # Already enabled globally
-	  sessionVariables = {
-    	EDITOR = "vim";
-    	VISUAL = "vim";
-    	TERM = "tmux";
-		};
+    enable = true;
+    enableCompletion = false; # Already enabled globally
+    sessionVariables = {
+      EDITOR = "vim";
+      VISUAL = "vim";
+      TERM = "tmux";
+    };
   };
 
   programs.home-manager.enable = true;
