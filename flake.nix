@@ -11,12 +11,7 @@
 
   outputs = { self, nixpkgs, home-manager }:
     let
-      user = "dominic";
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
       lib = nixpkgs.lib;
     in
     {
@@ -32,15 +27,14 @@
           };
 
           modules = [
-            ./configuration.nix
-            ./hardware-configuration.nix
+            ./hosts/onion
 
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${user} = {
-                imports = [ ./home.nix ];
+              home-manager.users.dominic = {
+                imports = [ ./home/dominic ];
               };
             }
           ];
