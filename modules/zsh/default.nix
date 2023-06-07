@@ -21,12 +21,4 @@
       source = ../../dotfiles/zsh-theme;
     };
   };
-
-  programs.zsh = {
-    enable = false; # Already enabled globally
-    sessionVariables = {
-      EDITOR = "vim";
-      VISUAL = "vim";
-    };
-  };
 }
