@@ -98,6 +98,7 @@ in
     htop
     wget
     git
+    dconf
   ];
 
   # Copy the NixOS configuration file and link it from the resulting system
