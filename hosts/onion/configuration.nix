@@ -58,6 +58,13 @@ in
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # Enable bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
+  services.blueman.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 

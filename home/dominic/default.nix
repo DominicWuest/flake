@@ -31,8 +31,11 @@ in
 
       slack
       discord
+      spotify
       thunderbird
     ];
+
+  services.blueman-applet.enable = true;
 
   home.pointerCursor = {
     x11.enable = true;
