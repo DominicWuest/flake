@@ -8,6 +8,8 @@
       xclip
       xsel # clipboard integration
 
+      brightnessctl # Screen brightness control
+
       # Python and packages
       (python311.withPackages (ps: with ps; [
         # i3 bumblebee-status dependencies

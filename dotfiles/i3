@@ -50,6 +50,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# Use brightnessctl to adjust screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -193,8 +197,8 @@ bar {
 	font pango:Iosevka, FontAwesome 12
 	height 20
 	status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-		-m layout nic disk:root cpu memory pulseout battery date time \
-		-p nic.format="{state} - {ssid} {strength}" root.path=/ time.format="%H:%M:%S" date.format="%a, %d %b %Y" pulseout.limit=100 pulseout.percent_change=1 \
+		-m layout nic disk:root cpu memory pulseout brightness battery date time \
+		-p nic.format="{state} - {ssid} {strength}" root.path=/ time.format="%H:%M:%S" date.format="%a, %d %b %Y" pulseout.limit=100 pulseout.percent_change=1 brightness.step=1 brightness.interval=.5 \
 		-t gruvbox-powerline
 }
 #end of BAR SECTION
