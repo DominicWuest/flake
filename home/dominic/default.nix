@@ -16,6 +16,7 @@ in
 
   imports = [
     (import ../../modules/i3 moduleInput)
+    (import ../../modules/dunst moduleInput)
     (import ../../modules/tmux moduleInput)
     (import ../../modules/zsh moduleInput)
     (import ../../modules/vim moduleInput)

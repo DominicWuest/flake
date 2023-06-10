@@ -197,7 +197,7 @@ bar {
 	font pango:Iosevka, FontAwesome 12
 	height 20
 	status_command ~/.config/i3/bumblebee-status/bumblebee-status \
-		-m layout nic disk:root cpu memory pulseout brightness battery date time \
+		-m layout nic disk:root cpu memory pulseout brightness battery date time dunstctl \
 		-p nic.format="{state} - {ssid} {strength}" root.path=/ time.format="%H:%M:%S" date.format="%a, %d %b %Y" pulseout.limit=100 pulseout.percent_change=1 brightness.step=1 brightness.interval=.5 \
 		-t gruvbox-powerline
 }
