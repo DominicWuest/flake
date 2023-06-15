@@ -23,6 +23,7 @@ in
       delve # debugger
       golint # linter
       go-tools # static checker
+      gotools # More devloping tools
 
       # Third party dev tools
       cobra-cli
